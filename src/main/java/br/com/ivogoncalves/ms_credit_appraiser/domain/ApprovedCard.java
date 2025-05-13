@@ -7,11 +7,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class CustomerCard {
+@AllArgsConstructor
+public class ApprovedCard {
 
-	private String name;
+	private String card;
 	private String flag;
-	private BigDecimal releasedLimit;
+	private BigDecimal approvedLimit;
 }
