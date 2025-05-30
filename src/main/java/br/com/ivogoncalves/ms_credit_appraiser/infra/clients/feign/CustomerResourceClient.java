@@ -1,4 +1,4 @@
-package br.com.ivogoncalves.ms_credit_appraiser.infra.clients;
+package br.com.ivogoncalves.ms_credit_appraiser.infra.clients.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package br.com.ivogoncalves.ms_credit_appraiser.infra.clients;
+package br.com.ivogoncalves.ms_credit_appraiser.infra.clients.feign;
 
 import java.math.BigDecimal;
 import java.util.List;

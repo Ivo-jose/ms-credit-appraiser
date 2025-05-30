@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerCard {
-	
-	private String name;
-	private String flag;
-	private BigDecimal limitReleased;
+public class CardIssuanceRequestData {
+
+	private Long idCard;
+	private String cpf;
+	private String address;
+	private BigDecimal releasedLimit;
 }

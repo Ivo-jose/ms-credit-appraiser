@@ -3,9 +3,17 @@ server:
 spring:
   application:
     name: ms-credit-appraiser
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:root}
+    password: ${RABBITMQ_PASSWORD:rabbitmq12345}
 eureka:
   client:
     service-url:
       defaultZone: http://${EUREKA_USER:adminEureka}:${EUREKA_PASSWORD:12345}@${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+mq:
+  queues:
+    card-issuance: card-issuance

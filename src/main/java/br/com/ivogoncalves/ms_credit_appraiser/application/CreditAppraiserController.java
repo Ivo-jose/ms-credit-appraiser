@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ivogoncalves.ms_credit_appraiser.domain.CardIssuanceRequestData;
+import br.com.ivogoncalves.ms_credit_appraiser.domain.CardRequestProtocol;
 import br.com.ivogoncalves.ms_credit_appraiser.domain.CustomerEvaluation;
 import br.com.ivogoncalves.ms_credit_appraiser.domain.CustomerSituation;
 import br.com.ivogoncalves.ms_credit_appraiser.domain.EvaluationData;
@@ -35,5 +37,11 @@ public class CreditAppraiserController {
 	public ResponseEntity<CustomerEvaluation> performEvaluation(@RequestBody EvaluationData data) {
 		CustomerEvaluation ce = crediAppraiserService.performEvaluation(data.getCpf(), data.getIncome());
 		return ResponseEntity.ok(ce);
+	}
+	
+	@PostMapping(path = "/request-card")
+	public ResponseEntity<CardRequestProtocol> requestCard(@RequestBody CardIssuanceRequestData data) {
+		CardRequestProtocol protocol = crediAppraiserService.requestCardIssuance(data);
+		return ResponseEntity.ok(protocol);
 	}
 }

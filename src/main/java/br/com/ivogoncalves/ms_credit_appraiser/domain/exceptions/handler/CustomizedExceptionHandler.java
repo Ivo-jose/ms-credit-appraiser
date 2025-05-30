@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import br.com.ivogoncalves.ms_credit_appraiser.domain.exceptions.CardRequestErrorException;
 import br.com.ivogoncalves.ms_credit_appraiser.domain.exceptions.ExceptionResponse;
 import br.com.ivogoncalves.ms_credit_appraiser.domain.exceptions.MicroservicesCommunicationError;
 import br.com.ivogoncalves.ms_credit_appraiser.domain.exceptions.ResourceNotFoundException;
@@ -41,6 +42,12 @@ public class CustomizedExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<ExceptionResponse> handleNotFoundException(Exception ex, WebRequest request) {
+		ExceptionResponse exception = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(true));
+		return new ResponseEntity<ExceptionResponse>(exception,HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(CardRequestErrorException.class)
+	public ResponseEntity<ExceptionResponse> handleCardRequestErrorException(Exception ex, WebRequest request) {
 		ExceptionResponse exception = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(true));
 		return new ResponseEntity<ExceptionResponse>(exception,HttpStatus.NOT_FOUND);
 	}
